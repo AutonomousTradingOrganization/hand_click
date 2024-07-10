@@ -38,7 +38,7 @@ describe("CPI from Hand to Counter", () => {
       .rpc();
   });
 
-   it("Can assert value in Counter's data account equals 1", async () => {
+  it("Can assert value in Counter's data account equals 1", async () => {
 
     const CounterAccountValue = (
       await counterProgram.account.counterData.fetch(dataAccountKeypair.publicKey)
@@ -46,4 +46,53 @@ describe("CPI from Hand to Counter", () => {
 
     expect(CounterAccountValue).to.equal(1);
   });
+
+  it("Multiple increment", async () => {
+
+    await handProgram.methods
+      .handClick()
+      .accounts({
+        counterDataAccount: dataAccountKeypair.publicKey,
+        counterProgram    : counterProgram.programId,
+      })
+      .rpc();
+
+      let CounterAccountValue = (
+        await counterProgram.account.counterData.fetch(dataAccountKeypair.publicKey)
+      ).value.toNumber();
+  
+      expect(CounterAccountValue).to.equal(2);
+
+
+      await handProgram.methods
+      .handClick()
+      .accounts({
+        counterDataAccount: dataAccountKeypair.publicKey,
+        counterProgram    : counterProgram.programId,
+      })
+      .rpc();
+
+      CounterAccountValue = (
+        await counterProgram.account.counterData.fetch(dataAccountKeypair.publicKey)
+      ).value.toNumber();
+  
+      expect(CounterAccountValue).to.equal(3);
+
+
+      await handProgram.methods
+      .handClick()
+      .accounts({
+        counterDataAccount: dataAccountKeypair.publicKey,
+        counterProgram    : counterProgram.programId,
+      })
+      .rpc();
+
+      CounterAccountValue = (
+        await counterProgram.account.counterData.fetch(dataAccountKeypair.publicKey)
+      ).value.toNumber();
+  
+      expect(CounterAccountValue).to.equal(4);
+
+    });
+
 });

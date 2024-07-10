@@ -30,14 +30,14 @@ pub mod counter {
 
 	pub fn click(ctx: Context<CounterClickOp>) -> Result<()> {
 		// MODIFY/UPDATE THE DATA ACCOUNT
-		ctx.accounts.counter_data_account.result += 1;
+		ctx.accounts.counter_data_account.value += 1;
 		Ok(())
 	}
 }
 
 #[account]
 pub struct CounterData {
-	pub result: u64,
+	pub value: u64,
 }
 
 #[derive(Accounts)]
@@ -173,7 +173,9 @@ describe("CPI from Hand to Counter", () => {
    it("Can assert value in Counter's data account equals 1", async () => {
 
     const CounterAccountValue = (
-      await counterProgram.account.counterData.fetch(dataAccountKeypair.publicKey)).value.toNumber();
+      await counterProgram.account.counterData.fetch(dataAccountKeypair.publicKey)
+    ).value.toNumber();
+
     expect(CounterAccountValue).to.equal(1);
   });
 });
