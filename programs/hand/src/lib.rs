@@ -16,14 +16,14 @@ pub mod hand {
 use super::*;
 
 	pub fn hand_click(ctx: Context<HandCounterOp>) -> Result<()> {
-		let cpi_ctx = CpiContext::new(
+		let cpi_ctx: CpiContext<CounterClickOp> = CpiContext::new(
 			ctx.accounts.counter_program.to_account_info(),
 			CounterClickOp {
 				counter_data_account: ctx.accounts.counter_data_account.to_account_info(),
 			}
 		);
 
-		let res = counter::cpi::click(cpi_ctx);
+		let res: std::result::Result<(), Error> = counter::cpi::click(cpi_ctx);
 
 		// return an error if the CPI failed
 		if res.is_ok() {

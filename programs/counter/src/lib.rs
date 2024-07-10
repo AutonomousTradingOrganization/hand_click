@@ -17,14 +17,14 @@ pub mod counter {
 
 	pub fn click(ctx: Context<CounterClickOp>) -> Result<()> {
 		// MODIFY/UPDATE THE DATA ACCOUNT
-		ctx.accounts.counter_data_account.result += 1;
+		ctx.accounts.counter_data_account.value += 1;
 		Ok(())
 	}
 }
 
 #[account]
 pub struct CounterData {
-	pub result: u64,
+	pub value: u64,
 }
 
 #[derive(Accounts)]
@@ -35,7 +35,11 @@ pub struct CounterClickOp<'info> {
 
 #[derive(Accounts)]
 pub struct Initialize<'info> {
-	#[account(init, payer = signer, space = size_of::<CounterData>() + 8)]
+	#[account(
+		init,
+		payer = signer,
+		space = size_of::<CounterData>() + 8
+	)]
 	pub counter_data_account: Account<'info, CounterData>,
 
 	#[account(mut)]
