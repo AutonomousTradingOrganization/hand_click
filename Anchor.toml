@@ -6,6 +6,7 @@ skip-lint = false
 
 [programs.localnet]
 counter = "JDH6YuAFD6c8YR8xaEgzvqwqCB6FJaV6oYeiFd79Bk3X"
+hand = "GGT2DGMhGv9TMBdTfkVpkULze2C4ct9FhECzXBS6LqWx"
 
 [registry]
 url = "https://api.apr.dev"
