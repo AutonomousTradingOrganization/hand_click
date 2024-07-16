@@ -1,7 +1,7 @@
 use anchor_lang::prelude::*;
 use std::mem::size_of;
 
-declare_id!("JDH6YuAFD6c8YR8xaEgzvqwqCB6FJaV6oYeiFd79Bk3X");
+declare_id!("HrhY8fYaGuG6VZk9wf4d5aYxRqj1UzXV9E9rFw6GtRtm");
 
 
 #[program]

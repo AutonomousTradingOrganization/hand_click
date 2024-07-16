@@ -8,6 +8,10 @@ skip-lint = false
 counter = "JDH6YuAFD6c8YR8xaEgzvqwqCB6FJaV6oYeiFd79Bk3X"
 hand = "GGT2DGMhGv9TMBdTfkVpkULze2C4ct9FhECzXBS6LqWx"
 
+[programs.devnet]
+counter = "HrhY8fYaGuG6VZk9wf4d5aYxRqj1UzXV9E9rFw6GtRtm"
+hand = "6CCXg2Nx13yUpvDB6NkL2LhCnRNyg4H1dzhTseVqtNVQ"
+
 [registry]
 url = "https://api.apr.dev"
 

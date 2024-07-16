@@ -7,7 +7,7 @@ use counter::program::Counter;
 // the account where Counter is storing the sum
 use counter::CounterData;
 
-declare_id!("GGT2DGMhGv9TMBdTfkVpkULze2C4ct9FhECzXBS6LqWx");
+declare_id!("6CCXg2Nx13yUpvDB6NkL2LhCnRNyg4H1dzhTseVqtNVQ");
 
 #[program]
 pub mod hand {
